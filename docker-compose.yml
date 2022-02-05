@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    run:
+        volumes:
+            - '/app'
+            - /app/node_modules
+        ports:
+            - '3001:3000'
+        image: weatherapp:dev
