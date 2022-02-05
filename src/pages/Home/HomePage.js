@@ -5,7 +5,7 @@ import './HomePage.scss'
 
 const HomePage = () => {
 
-  const cities = ["dallol","fairbanks","londres","recife","vancouver","yakutsk"]
+  const cities = ["dallol","fairbanks","london","recife","vancouver","yakutsk"]
 
   return <div className='HomePage'>
     <h1 className="title">Weather</h1>

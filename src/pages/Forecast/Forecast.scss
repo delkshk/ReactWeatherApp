@@ -1,0 +1,166 @@
+.ForecastPage {
+  background-color: #0f0f0f;
+  transition: 0.2s all;
+  text-align: center;
+  color: white;
+  .LoadingComponent,.ErrorComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    height: 100vh;
+    .responseIcon{
+        width: 50px;
+        margin-top: 1rem;
+    }
+  }
+  .LoadingComponent{
+    @keyframes rotationLoading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+    .responseIcon{
+        animation: rotationLoading 1s infinite linear;
+    }
+  }
+  button {
+    position: absolute;
+    background: none;
+    border: 0;
+    color: white;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
+    z-index: 1;
+    svg {
+      width: 30px;
+    }
+  }
+
+  .city {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+
+    transition: background-color 1000ms linear;
+    &.code-1000,
+    &[condition^="10"] {
+      // Sunny
+      background: rgb(59, 161, 181);
+      background: linear-gradient(
+        0deg,
+        rgba(59, 161, 181, 1) 0%,
+        rgba(87, 203, 220, 1) 100%
+      );
+    }
+    &.code-1063,
+    &[condition^="11"] {
+      // Rainy
+      background: #3c4353;
+      background: linear-gradient(0deg, #3c4353 0%, #616978 100%);
+    }
+    &.code-1063,
+    &[condition^="12"] {
+      // Snowy
+      background: #3c4353;
+      color: #0f0f0f;
+      background: linear-gradient(0deg, #a6a6a6 0%, #e0e0e0 100%);
+      svg {
+        color: #000;
+      }
+    }
+
+    @mixin rowLayout {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 10px;
+      row-gap: 10px;
+      margin: 1rem 0;
+      @media screen and (max-width: 320px) {
+        flex-wrap: wrap;
+        justify-content: center;
+        > div {
+          width: calc(50% - 1rem);
+        }
+      }
+    }
+
+    &-name {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    &-condition {
+      margin-bottom: 1rem;
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+    &-Icon {
+      width: 7rem;
+      margin: 2rem 0 1rem 0;
+      height: auto;
+      align-items: center;
+    }
+    &-currentDay {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0px 0px;
+      grid-template-areas:
+        "Current Current celcius"
+        "Current Current max"
+        "Current Current min";
+      &--Maxtemp,
+      &--Mintemp {
+        display: flex;
+        svg {
+          width: 10px;
+        }
+      }
+      &--temp {
+        grid-area: Current;
+        font-size: 4rem;
+      }
+      &--celcius {
+        grid-area: celcius;
+        text-align: left;
+      }
+      &--Maxtemp {
+        grid-area: max;
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+      &--Mintemp {
+        grid-area: min;
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+    &-timesCondition {
+      @include rowLayout();
+      &--item_name {
+        text-transform: lowercase;
+      }
+    }
+    &-others {
+      @include rowLayout();
+      &--item_name {
+        text-transform: lowercase;
+      }
+    }
+  }
+}
