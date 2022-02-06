@@ -45,13 +45,16 @@
 
   .city {
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     color: white;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
     transition: background-color 1000ms linear;
     &.code-1000,
@@ -84,9 +87,12 @@
     @mixin rowLayout {
       display: flex;
       justify-content: space-between;
-      column-gap: 2rem;
+      column-gap: 1rem;
       row-gap: 10px;
       margin: 1rem 0;
+      @media screen and (min-width: 768px) {
+        column-gap: 2rem;
+      }
       @media screen and (max-width: 320px) {
         flex-wrap: wrap;
         justify-content: center;

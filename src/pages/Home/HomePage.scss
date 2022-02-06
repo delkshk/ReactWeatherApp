@@ -41,4 +41,34 @@
             text-decoration: none;
         }
     }
+    .city-search{
+        border: 1px solid white;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+        input{
+            background-color: transparent;
+            border: 0px;
+            color: white;
+            top: 0;
+            height: 40px;
+            padding-left: 20px;
+            padding-right: 10px;
+            &:focus,&:focus-visible{
+                outline: none;
+            }
+        }
+        button{
+            color: white;
+            background-color: transparent;
+            border: 0;
+            margin-right: 10px;
+            svg {
+                width: 25px;
+                transform: rotate(180deg);
+            }
+        }
+    }
 }

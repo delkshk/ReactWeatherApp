@@ -35,6 +35,7 @@ const Forecast = () => {
         className={"city code-" + current.condition.code + " "}
       >
         <Return />
+        <div className="container">
         <h1 className="city-name">{data.location.name}</h1>
         <div className="city-condition">{current.condition.text}</div>
         <div className="city-currentDay">
@@ -90,6 +91,7 @@ const Forecast = () => {
             <div className="city-others--item_name">Humidity</div>
             <div className="city-others--item_value">{current.humidity}%</div>
           </div>
+        </div>
         </div>
       </div>
     );
