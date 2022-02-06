@@ -3,29 +3,30 @@
   transition: 0.2s all;
   text-align: center;
   color: white;
-  .LoadingComponent,.ErrorComponent {
+  .LoadingComponent,
+  .ErrorComponent {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     color: white;
     height: 100vh;
-    .responseIcon{
-        width: 50px;
-        margin-top: 1rem;
+    .responseIcon {
+      width: 50px;
+      margin-top: 1rem;
     }
   }
-  .LoadingComponent{
+  .LoadingComponent {
     @keyframes rotationLoading {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(-360deg);
-        }
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
     }
-    .responseIcon{
-        animation: rotationLoading 1s infinite linear;
+    .responseIcon {
+      animation: rotationLoading 1s infinite linear;
     }
   }
   button {
@@ -83,7 +84,7 @@
     @mixin rowLayout {
       display: flex;
       justify-content: space-between;
-      column-gap: 10px;
+      column-gap: 2rem;
       row-gap: 10px;
       margin: 1rem 0;
       @media screen and (max-width: 320px) {
@@ -96,15 +97,16 @@
     }
 
     &-name {
-      font-size: 2rem;
+      font-size: 2.5rem;
       text-transform: uppercase;
-      font-weight: 500;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
+      font-weight: 300;
+      letter-spacing: 4px;
+      margin-bottom: 5px;
     }
     &-condition {
       margin-bottom: 1rem;
-      font-weight: 400;
+      font-weight: 100;
+      font-size: 1.25rem;
       text-transform: lowercase;
     }
     &-Icon {
@@ -125,26 +127,40 @@
       &--Maxtemp,
       &--Mintemp {
         display: flex;
+        justify-content: left;
+        align-items: center;
+        height: 30px;
         svg {
-          width: 10px;
+          width: 17px;
+          opacity: 0.5;
         }
       }
       &--temp {
         grid-area: Current;
-        font-size: 4rem;
+        font-size: 110px;
       }
       &--celcius {
         grid-area: celcius;
         text-align: left;
+        font-size: 25px;
+        justify-content: center;
+        align-items: initial;
+        display: flex;
+        margin-top: 10px;
+        span{
+          font-size: 12px;
+        }
       }
       &--Maxtemp {
         grid-area: max;
+        margin-top: 8px;
         svg {
           transform: rotate(90deg);
         }
       }
       &--Mintemp {
         grid-area: min;
+        margin-top: -10px;
         svg {
           transform: rotate(-90deg);
         }
@@ -152,14 +168,48 @@
     }
     &-timesCondition {
       @include rowLayout();
-      &--item_name {
-        text-transform: lowercase;
+      &--item{
+        &_name {
+          text-transform: lowercase;
+          margin-bottom: 10px;
+        }
+        &_icon {
+          margin-bottom: 9px;
+        }
+        &_value{
+          font-size: 23px;
+          font-weight: 300;
+          display: flex;
+          justify-content: center;
+          span{
+            font-size: 12px;
+          }
+        }
       }
     }
     &-others {
       @include rowLayout();
-      &--item_name {
-        text-transform: lowercase;
+      &--item{
+        &_name {
+          text-transform: lowercase;
+          margin-bottom: 10px;
+          opacity: 0.75;
+        }
+        &_icon {
+          margin-bottom: 9px;
+        }
+        position: relative;
+        &:not(:last-child):before{
+          content: '';
+          position: absolute;
+          height: 25px;
+          width: 1px;
+          background: white;
+          right: -15px;
+          opacity: 0.5;
+          top: 9px;
+        }
+
       }
     }
   }

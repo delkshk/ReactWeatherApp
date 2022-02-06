@@ -38,13 +38,13 @@ const Forecast = () => {
         <h1 className="city-name">{data.location.name}</h1>
         <div className="city-condition">{current.condition.text}</div>
         <div className="city-currentDay">
-          <div className="city-currentDay--temp">{current.temp_c}</div>
-          <div className="city-currentDay--celcius">°C</div>
+          <div className="city-currentDay--temp">{Math.round(current.temp_c)}</div>
+          <div className="city-currentDay--celcius"><span>°</span>C</div>
           <div className="city-currentDay--Maxtemp">
-            <ArrowIcon /> {Math.round(day.maxtemp_c)} °C
+            <ArrowIcon /> {Math.round(day.maxtemp_c)} <span>°</span>C
           </div>
           <div className="city-currentDay--Mintemp">
-            <ArrowIcon /> {Math.round(day.mintemp_c)} °C
+            <ArrowIcon /> {Math.round(day.mintemp_c)} <span>°</span>C
           </div>
         </div>
         <img
@@ -65,7 +65,7 @@ const Forecast = () => {
                   alt={timesNames[i]}
                 />
                 <div className="city-timesCondition--item_value">
-                  {Math.round(hour.temp_c)}°C
+                  {Math.round(hour.temp_c)}<span>°</span>C
                 </div>
               </div>
             );
@@ -84,11 +84,11 @@ const Forecast = () => {
           </div>
           <div className="city-others--item">
             <div className="city-others--item_name">Sunset</div>
-            <div className="city-others--item_name">{astro.sunset}</div>
+            <div className="city-others--item_value">{astro.sunset}</div>
           </div>
           <div className="city-others--item">
             <div className="city-others--item_name">Humidity</div>
-            <div className="city-others--item_name">{current.humidity}%</div>
+            <div className="city-others--item_value">{current.humidity}%</div>
           </div>
         </div>
       </div>
