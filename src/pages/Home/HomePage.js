@@ -7,6 +7,7 @@ import './HomePage.scss'
 const HomePage = () => {
   const cities = ["dallol","fairbanks","london","recife","vancouver","yakutsk"];
   return <div className='HomePage'>
+    <div className="container">
     <h1 className="title">Weather</h1>
     <h2 className="subtitle">select a city</h2>
     <WorldWide color="white" className="WorldWide"/>
@@ -16,6 +17,7 @@ const HomePage = () => {
       })}
     </div>
      <SearchCity/> 
+    </div>
   </div>;
 };
 
