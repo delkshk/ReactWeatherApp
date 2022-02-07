@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Api } from "../../api/api";
 import ArrowIcon from "../../components/ArrowIcon";
+import { WeatherIcon } from "../../components/WeatherIcon";
 import "./Forecast.scss";
 
 const Forecast = () => {
@@ -14,6 +15,7 @@ const Forecast = () => {
     Api.get("forecast.json?q=" + params.cityName)
       .then(function (response) {
         setForecast(response.data);
+        console.log(response.data)
         setLoaded(true);
       })
       .catch(function (error) {
@@ -48,7 +50,7 @@ const Forecast = () => {
             <ArrowIcon /> {Math.round(day.mintemp_c)} <span>°</span>C
           </div>
         </div>
-        <img
+        <WeatherIcon
           className="city-Icon"
           alt={current.condition.text}
           src={current.condition.icon}
@@ -60,7 +62,7 @@ const Forecast = () => {
                 <div className="city-timesCondition--item_name">
                   {timesNames[i]}
                 </div>
-                <img
+                <WeatherIcon
                   className="city-timesCondition--item_icon"
                   src={hour.condition.icon}
                   alt={timesNames[i]}

@@ -66,6 +66,10 @@
         rgba(59, 161, 181, 1) 0%,
         rgba(87, 203, 220, 1) 100%
       );
+
+      .Weather_icon {
+        filter: brightness(0) invert(1);
+      }
     }
     &.code-1063,
     &[condition^="11"] {
@@ -181,6 +185,7 @@
         }
         &_icon {
           margin-bottom: 9px;
+          height: 64px;
         }
         &_value{
           font-size: 23px;
