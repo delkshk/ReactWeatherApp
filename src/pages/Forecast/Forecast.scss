@@ -64,7 +64,8 @@
       background: linear-gradient(
         0deg,
         rgba(59, 161, 181, 1) 0%,
-        rgba(87, 203, 220, 1) 100%
+        #49B6C8 50%,
+        #55C9DA
       );
 
       .Weather_icon {
@@ -107,21 +108,24 @@
     }
 
     &-name {
-      font-size: 2.5rem;
+      font-size: 40px;
       text-transform: uppercase;
       font-weight: 300;
-      letter-spacing: 4px;
-      margin-bottom: 5px;
+      letter-spacing: -2px;
+      margin-bottom: 0px;
+      margin-top: -40px;
+
     }
     &-condition {
-      margin-bottom: 1rem;
       font-weight: 100;
       font-size: 1.25rem;
       text-transform: lowercase;
+      margin-bottom: 30px;
+      margin-top: 13px;
     }
     &-Icon {
       width: 7rem;
-      margin: 2rem 0 1rem 0;
+      margin: 0rem 0 2rem 0;
       height: auto;
       align-items: center;
     }
@@ -130,6 +134,7 @@
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       gap: 0px 0px;
+      position: relative;
       grid-template-areas:
         "Current Current celcius"
         "Current Current max"
@@ -185,7 +190,7 @@
         }
         &_icon {
           margin-bottom: 9px;
-          height: 64px;
+          height: 44px;
         }
         &_value{
           font-size: 23px;
@@ -200,6 +205,7 @@
     }
     &-others {
       @include rowLayout();
+      margin: 2rem 0 0;
       &--item{
         &_name {
           text-transform: lowercase;

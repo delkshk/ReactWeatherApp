@@ -15,7 +15,6 @@ const Forecast = () => {
     Api.get("forecast.json?q=" + params.cityName)
       .then(function (response) {
         setForecast(response.data);
-        console.log(response.data)
         setLoaded(true);
       })
       .catch(function (error) {
@@ -38,62 +37,67 @@ const Forecast = () => {
       >
         <Return />
         <div className="container">
-        <h1 className="city-name">{data.location.name}</h1>
-        <div className="city-condition">{current.condition.text}</div>
-        <div className="city-currentDay">
-          <div className="city-currentDay--temp">{Math.round(current.temp_c)}</div>
-          <div className="city-currentDay--celcius"><span>°</span>C</div>
-          <div className="city-currentDay--Maxtemp">
-            <ArrowIcon /> {Math.round(day.maxtemp_c)} <span>°</span>C
-          </div>
-          <div className="city-currentDay--Mintemp">
-            <ArrowIcon /> {Math.round(day.mintemp_c)} <span>°</span>C
-          </div>
-        </div>
-        <WeatherIcon
-          className="city-Icon"
-          alt={current.condition.text}
-          src={current.condition.icon}
-        />
-        <div className="city-timesCondition">
-          {times.map((hour, i) => {
-            return (
-              <div className="city-timesCondition--item" key={i}>
-                <div className="city-timesCondition--item_name">
-                  {timesNames[i]}
-                </div>
-                <WeatherIcon
-                  className="city-timesCondition--item_icon"
-                  src={hour.condition.icon}
-                  alt={timesNames[i]}
-                />
-                <div className="city-timesCondition--item_value">
-                  {Math.round(hour.temp_c)}<span>°</span>C
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="city-others">
-          <div className="city-others--item">
-            <div className="city-others--item_name">Wind speed</div>
-            <div className="city-others--item_value">
-              {Math.round(0.277778 * current.wind_kph)} m/s
+          <h1 className="city-name">{data.location.name}</h1>
+          <div className="city-condition">{current.condition.text}</div>
+          <div className="city-currentDay">
+            <div className="city-currentDay--temp">
+              {Math.round(current.temp_c)}
+            </div>
+            <div className="city-currentDay--celcius">
+              <span>°</span>C
+            </div>
+            <div className="city-currentDay--Maxtemp">
+              <ArrowIcon /> {Math.round(day.maxtemp_c)} <span>°</span>C
+            </div>
+            <div className="city-currentDay--Mintemp">
+              <ArrowIcon /> {Math.round(day.mintemp_c)} <span>°</span>C
             </div>
           </div>
-          <div className="city-others--item">
-            <div className="city-others--item_name">Sunrise</div>
-            <div className="city-others--item_value">{astro.sunrise}</div>
+          <WeatherIcon
+            className="city-Icon"
+            alt={current.condition.text}
+            src={current.condition.icon}
+          />
+          <div className="city-timesCondition">
+            {times.map((hour, i) => {
+              return (
+                <div className="city-timesCondition--item" key={i}>
+                  <div className="city-timesCondition--item_name">
+                    {timesNames[i]}
+                  </div>
+                  <WeatherIcon
+                    className="city-timesCondition--item_icon"
+                    src={hour.condition.icon}
+                    alt={timesNames[i]}
+                  />
+                  <div className="city-timesCondition--item_value">
+                    {Math.round(hour.temp_c)}
+                    <span>°</span>C
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="city-others--item">
-            <div className="city-others--item_name">Sunset</div>
-            <div className="city-others--item_value">{astro.sunset}</div>
+          <div className="city-others">
+            <div className="city-others--item">
+              <div className="city-others--item_name">Wind speed</div>
+              <div className="city-others--item_value">
+                {Math.round(0.277778 * current.wind_kph)} m/s
+              </div>
+            </div>
+            <div className="city-others--item">
+              <div className="city-others--item_name">Sunrise</div>
+              <div className="city-others--item_value">{astro.sunrise}</div>
+            </div>
+            <div className="city-others--item">
+              <div className="city-others--item_name">Sunset</div>
+              <div className="city-others--item_value">{astro.sunset}</div>
+            </div>
+            <div className="city-others--item">
+              <div className="city-others--item_name">Humidity</div>
+              <div className="city-others--item_value">{current.humidity}%</div>
+            </div>
           </div>
-          <div className="city-others--item">
-            <div className="city-others--item_name">Humidity</div>
-            <div className="city-others--item_value">{current.humidity}%</div>
-          </div>
-        </div>
         </div>
       </div>
     );

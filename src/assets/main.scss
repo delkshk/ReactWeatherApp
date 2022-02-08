@@ -54,7 +54,9 @@ body {
 
 
   #root > div{
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
   }
 }
 
@@ -63,6 +65,7 @@ body {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
+	max-width: 100%;
   }
   @media (min-width: 768px) {
 	.container {
