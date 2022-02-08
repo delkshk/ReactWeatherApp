@@ -22,7 +22,7 @@ const Forecast = () => {
         setLoaded(true);
         setError(true);
       });
-  }, []);
+  }, [params.cityName]);
   const ForecastData = ({ ...props }) => {
     const data = props.data;
     const current = data.current;

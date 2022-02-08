@@ -20,7 +20,7 @@ const SearchCity = () => {
     e.preventDefault();
     let cityFormatted = removeAccents(formCity.toLowerCase());
     cityFormatted = cityFormatted
-    .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, "")
+    .replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/]/gi, "")
     .replace(" ", "-")
 
 
@@ -35,8 +35,9 @@ const SearchCity = () => {
         placeholder="Search any city"
         value={formCity}
         onChange={cityForm}
+        id="searchInput"
       />
-      <button type="submit">
+      <button type="submit" id="searchButton">
         <ArrowIcon />
       </button>
     </form>
